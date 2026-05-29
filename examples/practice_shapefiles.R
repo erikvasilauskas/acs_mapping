@@ -80,12 +80,13 @@ ggplot(texas_bgs) +
 
 #️ Exercise 5: Zip Code Tabulation Areas (ZCTAs)
 # Goal: Work with postal-related boundaries.
+# This is large and time consuming, you will want to run it intentionally
 
-zctas <- zctas(cb = FALSE)
-
-ggplot(zctas) + 
-    geom_sf() + 
-    ggtitle("ZIP Code Tabulation Areas")
+#zctas <- zctas(cb = FALSE)
+#
+#ggplot(zctas) + 
+#    geom_sf() + 
+#    ggtitle("ZIP Code Tabulation Areas")
 
 
 #️ Exercise 6: Places (Cities & Towns)

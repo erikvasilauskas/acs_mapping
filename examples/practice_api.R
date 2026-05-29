@@ -16,7 +16,7 @@ invisible(lapply(pkgs_api, library, character.only = TRUE))
 
 # Decennial variables to plug in
 
-# Decennial population data
+# Decennial population data, all states
 
 pop_dec <- get_decennial(
     geography = "county",
@@ -45,7 +45,7 @@ BACH_DEGREE <- "B15003_022E"
 WORK_TRAVEL <- "B08301_010E"
 
 
-# ACS 5-year Population data
+# ACS 5-year Population data, all states
 
 acs_total_pop = get_acs(
     # Data set default: American Community Survey 5-Year
@@ -136,7 +136,7 @@ acs_west_coast_income = get_acs(
 acs_west_coast_income
 
 
-# ACS 5-year DMV Population
+# ACS 5-year DMV Population, county level
 
 acs_dmv_population = get_acs(
     # Data set default: American Community Survey 5-Year
