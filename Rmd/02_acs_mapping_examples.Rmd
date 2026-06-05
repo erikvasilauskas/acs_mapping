@@ -62,7 +62,7 @@ First, lets take a look at the available datasets.
 ```{r apis}
 apis <- listCensusApis()   # Get general information about available datasets
 
-head(apis[ , -9], 30) #1788 api options
+head(apis[ , -c(8,9,10)], 30) #1788 api options
 
 
 # Lets filter it down to ACS related only
@@ -87,9 +87,9 @@ ACS1_13_vars <- load_variables(2013, "acs1")
 ACS5_22_vars <- load_variables(2022, "acs5")
 ```
 
-Example 1: Mapping State Population Estimates from the ACS
+### Example 1: Mapping State Population Estimates from the ACS
 
-Goals: Retrieve ACS 1-year 2024 population estimates, join them to state boundaries, and create a choropleth map using ggplot2.
+- Goals: Retrieve ACS 1-year 2024 population estimates, join them to state boundaries, and create a choropleth map using ggplot2.
 
 - See additional geography options [here](http://api.census.gov/data/2024/acs/acs1/geography.json)
 - See additional variable options [here](http://api.census.gov/data/2024/acs/acs1/variables.json)
@@ -130,18 +130,18 @@ ggplot(map_pop_acs) +
 # note that this is the standard view, but this is not the Census standard view, we will see a geography shift in Example 3
 ```
 
-Workflow: ACS Data → State Shapefile → Join → Map
+- Workflow: ACS Data → State Shapefile → Join → Map
 
-### Why Does Alaska Look So Far Away?
+Why Does Alaska Look So Far Away?
 
 This map uses the original state geometries provided by the Census Bureau. Notice that Alaska and Hawaii appear in their true geographic locations.
 
 Many cartographic products shift Alaska and Hawaii closer to the continental United States. The purpose of this shift is not to change the data, but to improve map readability and make better use of available space. We begin with displaying the original geometries so you can see the source data before introducing cartographic adjustments in later examples.
 
 
-Example 2: Creating Interactive Population Maps with mapview
+### Example 2: Creating Interactive Population Maps with mapview
 
-Goal: Create an interactive map that allows the option to zoom, pan, and inspect population estimates for individual states.
+- Goal: Create an interactive map that allows the option to zoom, pan, and inspect population estimates for individual states.
 
 ```{r acs-pop}
 ## Step 1: Data call to the Census API
@@ -184,12 +184,12 @@ mapview((map_pop_acs_wide %>%
         layer.name = "Region")
 ```
 
-Workflow: ACS Data → Wide Format → State Shapefile → Join → Interactive Map
+- Workflow: ACS Data → Wide Format → State Shapefile → Join → Interactive Map
 
 
-Example 3: ACS Population (States) with shifted geometry
+### Example 3: ACS Population (States) with shifted geometry
 
-Goal: Retrieve ACS data with geometry included, apply a geometry shift, and create a state-level population map.
+- Goal: Retrieve ACS data with geometry included, apply a geometry shift, and create a state-level population map.
 
 ```{r state-acs-pop}
 ## Step 1: Data call to the Census API with geometry included, and shift it to a Census standard
@@ -213,18 +213,18 @@ ggplot(pop_acs_geo) +
          caption = "Source: American Community Survey 1-year Estimate 2024")
 ```
 
-Workflow: ACS Data with Geometry → Shift Geometry → Map
+- Workflow: ACS Data with Geometry → Shift Geometry → Map
 
-### Why Shift State Geometries?
+Why Shift State Geometries?
 
 Alaska and Hawaii are geographically far from the continental United States. While their true locations are accurate, they leave large areas of empty space and can make national maps more difficult to read.
 
 A geometry shift positions Alaska and Hawaii closer to the lower 48 states for display purposes. The underlying data do not change—only the visual placement of the features on the map.
 
 
-Example 4: Mapping 2020 Decennial Census Population by County
+### Example 4: Mapping 2020 Decennial Census Population by County
 
-Goal: Retrieve Decennial Census population data, obtain county boundaries from tigris, apply a geometry shift, and create a county-level population map.
+- Goal: Retrieve Decennial Census population data, obtain county boundaries from tigris, apply a geometry shift, and create a county-level population map.
 
 ```{r decennial}
 ## Step 1: Data call to the Census API
@@ -261,12 +261,12 @@ ggplot(map_pop_dec) +
          caption = "Source: Decennial Census 2020")
 ```
 
-Workflow: Decennial Census Data → County Shapefile → Shift Geometry → Remove Territories → Join → Map
+- Workflow: Decennial Census Data → County Shapefile → Shift Geometry → Remove Territories → Join → Map
 
 
-Example 5: Mapping County-Level Poverty Rates in the Mid-Atlantic Region
+### Example 5: Mapping County-Level Poverty Rates in the Mid-Atlantic Region
 
-Goal: Retrieve ACS 5-year poverty estimates, filter to a multi-state region, apply a geometry shift, and visualize results using both static (ggplot2) and interactive (mapview) maps.
+- Goal: Retrieve ACS 5-year poverty estimates, filter to a multi-state region, apply a geometry shift, and visualize results using both static (ggplot2) and interactive (mapview) maps.
 
 ```{r poverty-county}
 ## Step 1: Data call to the Census API
@@ -324,12 +324,12 @@ mapview((map_pov_acs5 %>%
         layer.name = "Poverty Count Estimate")
 ```
 
-Workflow: ACS 5-Year Data → County Shapefile → Filter Region → Shift Geometry → Join → Static Map (ggplot2) → Interactive Map (mapview)
+- Workflow: ACS 5-Year Data → County Shapefile → Filter Region → Shift Geometry → Join → Static Map (ggplot2) → Interactive Map (mapview)
 
 
-Example 6: Mapping Bachelor's Degree Attainment Across California Census Tracts
+### Example 6: Mapping Bachelor's Degree Attainment Across California Census Tracts
 
-Goal: Retrieve ACS 5-year educational attainment data, join it to California census tract boundaries, and visualize geographic variation in bachelor's degree attainment.
+- Goal: Retrieve ACS 5-year educational attainment data, join it to California census tract boundaries, and visualize geographic variation in bachelor's degree attainment.
 
 ```{r education-tract}
 ## Step 1: Data call to the Census API
@@ -384,14 +384,14 @@ mapview(map_edu_acs5 %>%
         layer.name = "Bachelors Degree Attainment Estimate")
 ```
 
-Workflow: ACS 5-Year Data → California Tract Shapefile → Join → Map
+- Workflow: ACS 5-Year Data → California Tract Shapefile → Join → Map
 
-We now have ACS 5-year estimates for residents with a bachelor's degree at the census tract level throughout California.
+- We now have ACS 5-year estimates for residents with a bachelor's degree at the census tract level throughout California.
 
 
-Example 7: Mapping Median Household Income with Built-In Geometry
+### Example 7: Mapping Median Household Income with Built-In Geometry
 
-Goal: Retrieve ACS median household income estimates with geometry included and create a state-level choropleth map using ggplot2.
+- Goal: Retrieve ACS median household income estimates with geometry included and create a state-level choropleth map using ggplot2.
 
 ```{r income-state}
 ## Step 1: Data call to the Census API
@@ -417,14 +417,14 @@ ggplot(income_state) +
          caption = "Source: American Community Survey 1-year Estimate 2024")
 ```
 
-Workflow: ACS Data with Shifted Geometry → Map
+- Workflow: ACS Data with Shifted Geometry → Map
 
-We now have ACS 1-year estimates of median household income along with state geometries in a single dataset. Because the geometry was retrieved directly from the Census API and shifted, no separate shapefile download or join is required.
+- We now have ACS 1-year estimates of median household income along with state geometries in a single dataset. Because the geometry was retrieved directly from the Census API and shifted, no separate shapefile download or join is required.
 
 
-Example 8: Calculating and Mapping Poverty Rates by County
+### Example 8: Calculating and Mapping Poverty Rates by County
 
-Goal: Retrieve ACS poverty estimates, calculate county-level poverty rates using a numerator and denominator, apply a geometry shift, and visualize the results using both static and interactive maps.
+- Goal: Retrieve ACS poverty estimates, calculate county-level poverty rates using a numerator and denominator, apply a geometry shift, and visualize the results using both static and interactive maps.
 
 ```{r poverty-rate-county}
 ## Step 1: Data call to the Census API
@@ -467,14 +467,14 @@ mapview(poverty_pct %>%
         layer.name = "Percent in Poverty")
 ```
 
-Workflow: ACS Data with Geometry → Shift Geometry → Calculate Poverty Rate → Static Map (ggplot2) → Interactive Map (mapview)
+- Workflow: ACS Data with Geometry → Shift Geometry → Calculate Poverty Rate → Static Map (ggplot2) → Interactive Map (mapview)
 
-This example demonstrates the importance of converting counts to rates and shows how finer geographic detail can reveal patterns that larger geographic units may mask.
+- This example demonstrates the importance of converting counts to rates and shows how finer geographic detail can reveal patterns that larger geographic units may mask.
 
 
-Example 9: Comparing Educational Attainment with Side-by-Side Maps
+### Example 9: Comparing Educational Attainment with Side-by-Side Maps
 
-Goal: Retrieve ACS educational attainment data with geometry included, create side-by-side maps comparing bachelor's and master's degree counts, and apply a log transformation to improve visual interpretation.
+- Goal: Retrieve ACS educational attainment data with geometry included, create side-by-side maps comparing bachelor's and master's degree counts, and apply a log transformation to improve visual interpretation.
 
 ```{r degree-tract}
 ## Step 1: Data call to the Census API
@@ -534,14 +534,14 @@ p4 = ggplot(edu_ny_geo) +
   title = "Educational Attainment Across New York Census Tracts (Log10 Scale)")
 ```
 
-Workflow: ACS Data with Geometry → Pivot Wide → Create Side-by-Side Maps → Apply Log Transformation → Compare Results
+- Workflow: ACS Data with Geometry → Pivot Wide → Create Side-by-Side Maps → Apply Log Transformation → Compare Results
 
-We now have ACS educational attainment estimates and tract geometries for New York in a single spatial dataset. The log-transformed maps reveal patterns that were difficult to identify in the original visualizations because the color scale is no longer dominated by a small number of high-value tracts. Log transformation change how we visualize the data.
+- We now have ACS educational attainment estimates and tract geometries for New York in a single spatial dataset. The log-transformed maps reveal patterns that were difficult to identify in the original visualizations because the color scale is no longer dominated by a small number of high-value tracts. Log transformation change how we visualize the data.
 
 
-Example 10: Mapping Income and Landmarks in Washington, DC
+### Example 10: Mapping Income and Landmarks in Washington, DC
 
-Goal: Retrieve ACS median household income estimates with geometry included, add landmark locations from a supplemental shapefile, and create a layered map that combines socioeconomic data with geographic context.
+- Goal: Retrieve ACS median household income estimates with geometry included, add landmark locations from a supplemental shapefile, and create a layered map that combines socioeconomic data with geographic context.
 
 ```{r dc-landmarks}
 ## Step 1: Data call to the Census API
@@ -570,7 +570,7 @@ ggplot() +
          caption = "Source: American Community Survey 5-year Estimates 2024")
 ```
 
-Workflow: ACS Data with Geometry → Landmark Shapefile → Overlay Layers → Map
+- Workflow: ACS Data with Geometry → Landmark Shapefile → Overlay Layers → Map
 
 ### Demonstration Takeaway
 
