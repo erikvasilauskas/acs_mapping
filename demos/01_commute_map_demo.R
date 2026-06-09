@@ -305,7 +305,7 @@ dc_map <- ggplot(dc_counties) +
             color = "white",
             linewidth = 0.2) +
     scale_fill_gradientn(colors = census_blues,
-                         name = "Commute Index",
+                         name = "Commute Index Calculation",
                          labels = scales::label_number(accuracy = 1)) +
     coord_sf(expand = FALSE) +
     labs(title = "County-level Commute Patterns Across the Washington DC Metropolitan Area",
