@@ -20,23 +20,26 @@
 
 # 1. Load your necessary packages
 
-# Census data
-library(tidycensus)
-# Census shapefiles
+# For Census data
+library(tidycensus)   # ACS, Decennial 
+library(censusapi)    # All other Census datasets
+# For Census shapefiles
 library(tigris)
-# data wrangling
-library(tidyverse)
-# spatial data support
-library(sf)
-# static mapping
+# For working with the data and visualization, tidyverse packages
+library(dplyr)
+library(tidyr)
 library(ggplot2)
-# interactive mapping
-library(leaflet)
+# Spatial data support
+library(sf)
+# For interactive maps
 library(mapview)
-# formatting helpers
+library(leaflet)
+# For map/visual formatting and composition
+library(patchwork)
+# For number formatting helpers
 library(scales)
 
-# disable scientific notation
+# Disable scientific notation
 options(scipen = 999)
 
 

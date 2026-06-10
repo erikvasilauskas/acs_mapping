@@ -14,33 +14,31 @@
 #                   "tigris",
 #                   "tidyverse",
 #                   "sf",
-#                   "leaflet",
-#                   "scales",
 #                   "mapview",
-#                   "patchwork"))
+#                   "leaflet",
+#                   "patchwork",
+#                   "scales"))
 
 # 2. Load your libraries
 
-# Census data, ACS and Decennial
-library(tidycensus)
-# Census data, everything else
-library(censusapi)
-# Census shapefiles
+# For Census data
+library(tidycensus)   # ACS, Decennial 
+library(censusapi)    # All other Census datasets
+# For Census shapefiles
 library(tigris)
-# data wrangling
-library(tidyverse)
-# spatial data support
-library(sf)
-# static mapping
+# For working with the data and visualization, tidyverse packages
+library(dplyr)
+library(tidyr)
 library(ggplot2)
-# interactive mapping
-library(leaflet)
-# formatting helpers
-library(scales)
+# Spatial data support
+library(sf)
 # For interactive maps
 library(mapview)
+library(leaflet)
 # For map/visual formatting and composition
 library(patchwork)
+# For number formatting helpers
+library(scales)
 
 # 3. Census API Key setup (run one time only)
 

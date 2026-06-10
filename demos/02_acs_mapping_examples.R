@@ -16,35 +16,26 @@
 
 # Load our packages, which were installed in the setup file
 
-# For Census Data
-
-library(tidycensus) # ACS, Decennial 
-library(censusapi) # All other Census datasets
-
+# For Census data
+library(tidycensus)   # ACS, Decennial 
+library(censusapi)    # All other Census datasets
 # For Census shapefiles
-
 library(tigris)
-
-# For working with the data and visualization
-
+# For working with the data and visualization, tidyverse packages
 library(dplyr)
 library(tidyr)
 library(ggplot2)
-
+# Spatial data support
+library(sf)
 # For interactive maps
-
 library(mapview)
-
+library(leaflet)
 # For map/visual formatting and composition
-
 library(patchwork)
-
 # For number formatting helpers
-
 library(scales)
 
 # Disable scientific notation
-
 options(scipen = 999)
 
 # Use tigris cache to avoid redownloading shapefiles, optional
