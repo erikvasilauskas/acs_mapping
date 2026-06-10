@@ -499,7 +499,7 @@ locations for major city centers and state capitals.</li>
 counties_sf &lt;- counties(
     cb = TRUE,
     year = 2024) %&gt;%
-    filter(STUSPS %in% c(&quot;AK&quot;, &quot;HI&quot;, &quot;PR&quot;, state.abb)) %&gt;%
+    filter(STUSPS %in% c(&quot;PR&quot;, state.abb)) %&gt;%
     shift_geometry()  # used to reposition &amp; rescale Alaska, Hawaii, and Puerto Rico
 
 
@@ -508,7 +508,7 @@ counties_sf &lt;- counties(
 states_sf &lt;- states(
     cb = TRUE,
     year = 2024) %&gt;%
-    filter(STUSPS %in% c(&quot;AK&quot;, &quot;HI&quot;, &quot;PR&quot;, state.abb)) %&gt;%
+    filter(STUSPS %in% c(&quot;PR&quot;, state.abb)) %&gt;%
     shift_geometry()
 
 
@@ -517,7 +517,7 @@ states_sf &lt;- states(
 places_sf &lt;- places(
     cb = TRUE, 
     year = 2024) %&gt;%
-    filter(STUSPS %in% c(&quot;AK&quot;, &quot;HI&quot;, &quot;PR&quot;, state.abb)) %&gt;%
+    filter(STUSPS %in% c(&quot;PR&quot;, state.abb)) %&gt;%
     shift_geometry() %&gt;% 
     mutate(area_sqkm = as.numeric(st_area(geometry)) / 1e6) %&gt;%
     mutate(STUSPS_FIPS = substr(GEOID, 1, 2))  # first two digits of GEOID = state FIPS

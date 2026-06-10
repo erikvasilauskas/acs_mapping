@@ -120,7 +120,7 @@ pop_data <- get_acs(
 counties_sf <- counties(
     cb = TRUE,
     year = 2024) %>%
-    filter(STUSPS %in% c("AK", "HI", "PR", state.abb)) %>%
+    filter(STUSPS %in% c("PR", state.abb)) %>%
     shift_geometry()  # used to reposition & rescale Alaska, Hawaii, and Puerto Rico
 
 
@@ -129,7 +129,7 @@ counties_sf <- counties(
 states_sf <- states(
     cb = TRUE,
     year = 2024) %>%
-    filter(STUSPS %in% c("AK", "HI", "PR", state.abb)) %>%
+    filter(STUSPS %in% c("PR", state.abb)) %>%
     shift_geometry()
 
 
@@ -138,7 +138,7 @@ states_sf <- states(
 places_sf <- places(
     cb = TRUE, 
     year = 2024) %>%
-    filter(STUSPS %in% c("AK", "HI", "PR", state.abb)) %>%
+    filter(STUSPS %in% c("PR", state.abb)) %>%
     shift_geometry() %>% 
     mutate(area_sqkm = as.numeric(st_area(geometry)) / 1e6) %>%
     mutate(STUSPS_FIPS = substr(GEOID, 1, 2))  # first two digits of GEOID = state FIPS
