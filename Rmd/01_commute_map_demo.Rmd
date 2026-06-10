@@ -23,13 +23,13 @@ Core packages used:
 - [tidycensus](https://walker-data.com/tidycensus/) -> ACS API access
 - [tigris](https://github.com/walkerke/tigris) -> Census shapefiles
 - [ggplot2](https://ggplot2.tidyverse.org/) -> static thematic maps
-- [leaflet](https://rstudio.github.io/leaflet/) -> interactive web maps
+- [mapview](https://r-spatial.github.io/mapview/) -> interactive web maps
 
 Start with the 00_setup.R file to install necessary packages and your Census API key
 
 1. Load your necessary packages
 
-```{r Set Up}
+```{r packages}
 # Census data
 library(tidycensus)
 # Census shapefiles
@@ -42,6 +42,7 @@ library(sf)
 library(ggplot2)
 # interactive mapping
 library(leaflet)
+library(mapview)
 # formatting helpers
 library(scales)
 

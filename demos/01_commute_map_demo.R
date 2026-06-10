@@ -13,7 +13,8 @@
 # tidycensus  -> ACS API access; https://walker-data.com/tidycensus/
 # tigris      -> Census shapefiles; https://github.com/walkerke/tigris
 # ggplot2     -> static thematic maps
-# leaflet     -> interactive web maps
+# mapview     -> interactive web maps
+
 
 # Start with the 00_setup.R file to install necessary packages and your Census API key
 
@@ -31,6 +32,7 @@ library(sf)
 library(ggplot2)
 # interactive mapping
 library(leaflet)
+library(mapview)
 # formatting helpers
 library(scales)
 

@@ -11,7 +11,7 @@
 
 <meta name="author" content="Jessica Klein, U.S. Census Bureau" />
 
-<meta name="date" content="2026-06-09" />
+<meta name="date" content="2026-06-10" />
 
 <title>American Community Survey 5-year Estimates, Commute Data and Map Examples</title>
 
@@ -353,7 +353,7 @@ display: none;
 <h1 class="title toc-ignore">American Community Survey 5-year Estimates,
 Commute Data and Map Examples</h1>
 <h4 class="author">Jessica Klein, U.S. Census Bureau</h4>
-<h4 class="date">2026-06-09</h4>
+<h4 class="date">2026-06-10</h4>
 
 </div>
 
@@ -375,7 +375,7 @@ ACS API access</li>
 shapefiles</li>
 <li><a href="https://ggplot2.tidyverse.org/">ggplot2</a> -&gt; static
 thematic maps</li>
-<li><a href="https://rstudio.github.io/leaflet/">leaflet</a> -&gt;
+<li><a href="https://r-spatial.github.io/mapview/">mapview</a> -&gt;
 interactive web maps</li>
 </ul>
 <p>Start with the 00_setup.R file to install necessary packages and your
@@ -395,6 +395,7 @@ library(sf)
 library(ggplot2)
 # interactive mapping
 library(leaflet)
+library(mapview)
 # formatting helpers
 library(scales)
 
@@ -440,7 +441,7 @@ visuals.</li>
     variables = acs_vars,
     year = 2024,
     survey = &quot;acs5&quot;,      # acs5 is the default
-    output = &quot;wide&quot;,      # Wide format will allow for ease of visualization
+    output = &quot;wide&quot;,
     show_call = TRUE) %&gt;%
     mutate(
         # COMMUTE INTENSITY INDEX: Approximate weighted commute burden score, 
