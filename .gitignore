@@ -5,3 +5,4 @@
 .Renviron
 r-library/
 tigris-cache/
+research/**/data/raw/

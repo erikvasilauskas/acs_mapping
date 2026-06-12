@@ -1,7 +1,20 @@
 {
     "r.rpath.windows": "C:\\Users\\vasilauskas\\AppData\\Local\\Programs\\R\\R-4.5.0\\bin\\R.exe",
     "r.rterm.windows": "C:\\Users\\vasilauskas\\AppData\\Local\\Programs\\R\\R-4.5.0\\bin\\R.exe",
+    "r.rterm.option": [
+        "--no-save",
+        "--no-restore"
+    ],
     "r.sessionWatcher": true,
-    "r.alwaysUseActiveTerminal": true,
-    "r.bracketedPaste": true
+    "r.alwaysUseActiveTerminal": false,
+    "r.bracketedPaste": true,
+    "terminal.integrated.profiles.windows": {
+        "R 4.5.0": {
+            "path": "C:\\Users\\vasilauskas\\AppData\\Local\\Programs\\R\\R-4.5.0\\bin\\R.exe",
+            "args": [
+                "--no-save",
+                "--no-restore"
+            ]
+        }
+    }
 }
